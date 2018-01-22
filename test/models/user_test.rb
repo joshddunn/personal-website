@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test "valid user factory" do
+    assert build(:user).valid?
+  end
 end

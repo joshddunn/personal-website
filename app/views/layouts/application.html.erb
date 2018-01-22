@@ -48,7 +48,6 @@
               <div><%= link_to "Logout", destroy_user_session_path, method: :delete %></div>
               <div><%= link_to "New Article", new_article_path %></div>
               <% if yield(:article).present? %>
-                <% puts yield(:article) %>
                 <div><%= link_to "Edit Article", edit_article_path(yield(:article)) %></div>
                 <div>
                   <%= link_to "Delete Article", article_path(yield(:article)), method: :delete, 
