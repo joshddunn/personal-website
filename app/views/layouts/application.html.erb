@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Josh Dunn</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div class="top"></div>
+
+    <div class="container">
+      <div class="info">
+        <div><%= image_tag "me.jpg", class: "me" %></div>
+        <div>
+          <div>
+            <div class="name">Josh Dunn</div>
+            <div><%= link_to "Github", "//github.com/joshddunn" %></div>
+            <div><%= link_to "Resume", "#" %></div>
+            <div><%= link_to "Email", "mailto:jdunn45@alumni.uwo.ca" %></div>
+          </div>
+          <div class="actions">
+            <div><%= link_to "New Article", new_article_path %></div>
+            <% if yield(:article).present? %>
+              <% puts yield(:article) %>
+              <div><%= link_to "Update Article", edit_article_path(yield(:article).ord) %></div>
+              <div>
+                <%= link_to "Delete Article", article_path(yield(:article).ord), method: :delete, 
+                                                                                 class: "delete",
+                                                                                 data: { 
+                                                                                   confirm: "Are you sure?" 
+                                                                                 } %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="yield">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

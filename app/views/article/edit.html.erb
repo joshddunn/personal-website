@@ -1,0 +1,22 @@
+<%= form_for @article, as: :article, url: article_path do |f| %>
+  <%# <%= render 'shared/error_messages', object: @article %1> %>
+
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :published, "Publish On" %><br>
+    <%= f.date_field :published, value: Date.today %>
+  </div>
+
+  <div>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+
+  <div>
+    <%= f.submit "Publish Article" %>
+  </div>
+<% end %>

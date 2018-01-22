@@ -1,0 +1,14 @@
+<%= provide :article, @article.id %>
+
+<div class="article-show">
+  <div class="title-show">
+    <%= @article.title.titleize %>
+  </div>
+  <div class="date-show">
+    <%= @article.published.strftime("%B %e, %Y") %>
+  </div>
+</div>
+
+<div class="content-show">
+  <%= @article.content %>
+</div>

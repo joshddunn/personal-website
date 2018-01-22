@@ -1,0 +1,13 @@
+<div class="articles-index">
+  Blog Posts
+</div>
+<% @articles.each do |article| %>
+  <div class="article-index">
+    <div class="title-index">
+      <%= link_to article.title.titleize, article_path(article.id) %>
+    </div>
+    <div class="date-index">
+      <%= article.published.strftime("%B %e, %Y") %>
+    </div>
+  </div>
+<% end %>

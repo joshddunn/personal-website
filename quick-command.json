@@ -1,0 +1,27 @@
+{
+  "editor": "mvim",
+  "command": {
+    "watch": "qc cli watch",
+    "gif": "qc cli gif",
+    "rw": "docker-compose run web",
+    "prw": "docker-compose -f docker-compose.prod.yml run web",
+    "ub": "docker-compose up --build",
+    "dbc": "docker-compose run web rake db:create",
+    "u": "docker-compose up",
+    "pu": "docker-compose -f docker-compose.prod.yml up",
+    "pub": "docker-compose -f docker-compose.prod.yml up --build",
+    "deploy": "docker-compose -f docker-compose.prod.yml up -d",
+    "d": "docker-compose down",
+    "s": "rm tmp/pids/server.pid; docker-compose up",
+    "ps": "rm tmp/pids/server.pid; docker-compose -f docker-compose.prod.yml up",
+    "rails": "qc rw rails",
+    "prails": "qc prw rails",
+    "prune": "docker system prune -a -f"
+  },
+  "watch": {
+    "install": {
+      "file": "install.sh",
+      "action": "echo 'hello'"
+    }
+  }
+}

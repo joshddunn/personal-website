@@ -1,0 +1,49 @@
+.article-index {
+  padding: 10px;
+  width: calc(100% - 20px);
+  border-bottom: 1px solid black;
+
+  .title-index {
+    a {
+      color: black;
+
+      &:hover {
+        color: #666;
+      }
+    }
+  }
+
+  .date-index {
+    margin-top: 5px;
+    font-size: 10pt;
+  }
+}
+
+.articles-index {
+  padding: 10px;
+  width: calc(100% - 20px);
+  border-bottom: 1px solid black;
+
+  font-weight: bold;
+}
+
+.article-show {
+  padding: 10px;
+  width: calc(100% - 20px);
+  border-bottom: 1px solid black;
+
+  .title-show {
+    font-weight: bold;
+  }
+
+  .date-show {
+    margin-top: 5px;
+    font-size: 10pt;
+  }
+}
+
+.content-show {
+  padding: 10px;
+  width: calc(100% - 20px);
+  border-bottom: 1px solid black;
+}
