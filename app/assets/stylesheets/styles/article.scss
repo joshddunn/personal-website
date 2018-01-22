@@ -21,6 +21,7 @@
 
 .articles-index {
   padding: 10px;
+  padding-top: 0px;
   width: calc(100% - 20px);
   border-bottom: 1px solid black;
 
@@ -29,11 +30,13 @@
 
 .article-show {
   padding: 10px;
+  padding-top: 0px;
   width: calc(100% - 20px);
   border-bottom: 1px solid black;
 
   .title-show {
     font-weight: bold;
+    font-size: 14pt;
   }
 
   .date-show {

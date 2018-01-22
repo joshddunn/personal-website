@@ -46,6 +46,7 @@ class ArticleController < ApplicationController
     def article_params
       filtered = params.require(:article).permit(:title, :published, :content)
       filtered = filtered.merge(parameterized: params[:article][:title].parameterize)
+      filtered = filtered.merge(markdown: helpers.markdown(params[:article][:content]))
       filtered
     end
 end
