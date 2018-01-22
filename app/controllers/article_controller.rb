@@ -1,4 +1,7 @@
 class ArticleController < ApplicationController
+
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @articles = Article.where("published <= '#{Date.today}'").order(published: :desc)
   end
