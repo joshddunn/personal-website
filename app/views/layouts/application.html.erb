@@ -22,8 +22,24 @@
             <div><%= link_to_if !current_page?(root_path), "Blog", root_path %></div>
             <div><%= link_to "Resume", "#" %></div>
             <div class="contact">
-              <div><%= link_to "Github", "//github.com/joshddunn" %></div>
-              <div><%= link_to "Email", "mailto:jdunn45@alumni.uwo.ca" %></div>
+              <div>
+                <%= link_to "//github.com/joshddunn", title: :Github do %>
+                  <% fa_icon :github %>
+                <% end %>
+                <%= link_to "//mailto:me@joshddunn.com", title: :Email do %>
+                  <% fa_icon :envelope %>
+                <% end %>
+              </div>
+            </div>
+            <div class="projects">
+              <div>
+                <%= fa_icon :link %>
+                <%= link_to "pokeql.com", "//pokeql.com", title: "Pokemon GraphQL API" %>
+              </div>
+              <div>
+                <%= fa_icon :link %>
+                <%= link_to "mtgql.com", "//mtgql.com", title: "MTG GraphQL API" %>
+              </div>
             </div>
           </div>
 

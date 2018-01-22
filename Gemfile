@@ -56,3 +56,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.4'
 gem 'redcarpet', '~> 2.3.0'
 gem 'pygments.rb', '~> 1.2'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.3'
