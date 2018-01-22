@@ -4,7 +4,7 @@
 <% @articles.each do |article| %>
   <div class="article-index">
     <div class="title-index">
-      <%= link_to article.title.titleize, article_path(article.id) %>
+      <%= link_to article.title.titleize, article_path(article.parameterized) %>
     </div>
     <div class="date-index">
       <%= article.published.strftime("%B %e, %Y") %>

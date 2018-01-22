@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121233947) do
+ActiveRecord::Schema.define(version: 20180122015541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20180121233947) do
     t.date "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "parameterized"
+    t.index ["parameterized"], name: "index_articles_on_parameterized", unique: true
     t.index ["published"], name: "index_articles_on_published"
     t.index ["title"], name: "index_articles_on_title", unique: true
   end

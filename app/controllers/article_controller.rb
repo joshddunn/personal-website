@@ -4,7 +4,7 @@ class ArticleController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.find_by(parameterized: params[:id])
   end
 
   def new
@@ -14,33 +14,35 @@ class ArticleController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      render "show"
+      redirect_to article_path(@article.parameterized)
     else
       render "new"
     end
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.find_by(parameterized: params[:id])
   end
 
   def update
-    @article = @article = Article.find(params[:id])
+    @article = @article = Article.find_by(parameterized: params[:id])
     if @article.update(article_params)
-      render "show"
+      redirect_to article_path(@article.parameterized)
     else
       render "edit"
     end
   end
 
   def destroy
-    Article.find(params[:id]).delete
+    Article.find_by(parameterized: params[:id]).delete
     redirect_to root_path
   end
 
   private
     
     def article_params
-      params.require(:article).permit(:title, :published, :content)
+      filtered = params.require(:article).permit(:title, :published, :content)
+      filtered = filtered.merge(parameterized: params[:article][:title].parameterize)
+      filtered
     end
 end

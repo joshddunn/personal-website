@@ -1,5 +1,5 @@
 <%= form_for @article, as: :article, url: article_path do |f| %>
-  <%# <%= render 'shared/error_messages', object: @article %1> %>
+  <%= render 'shared/error_messages', object: @article %>
 
   <div>
     <%= f.label :title %><br>
