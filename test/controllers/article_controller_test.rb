@@ -133,4 +133,20 @@ class ArticleControllerTest < ActionDispatch::IntegrationTest
 
     assert_select "div.actions a[href=?][data-method=delete]", article_path(article.parameterized)
   end
+
+  test "should see hidden article when signed in" do
+    signin user
+
+    create(:article, hidden: true, title: "this is a hidden article")
+
+    get root_url
+    assert_select "div.title-index > a", "this is a hidden article"
+  end
+
+  test "should not see hidden article without sign in" do
+    create(:article, hidden: true, title: "this is a hidden article")
+
+    get root_url
+    assert_select "div.title-index > a", count: 0, text: "this is a hidden article"
+  end
 end

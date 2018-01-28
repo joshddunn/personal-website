@@ -4,6 +4,9 @@
 <% @articles.each do |article| %>
   <div class="article-index">
     <div class="title-index">
+      <% if article.hidden %>
+        <%= fa_icon "eye-slash" %>
+      <% end %>
       <%= link_to article.title, article_path(article.parameterized) %>
     </div>
     <div class="date-index">

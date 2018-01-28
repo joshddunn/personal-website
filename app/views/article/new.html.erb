@@ -7,6 +7,11 @@
   </div>
 
   <div>
+    <%= f.label :hidden %>
+    <%= f.check_box :hidden %>
+  </div>
+
+  <div>
     <%= f.label :published, "Publish On" %><br>
     <%= f.date_field :published, value: Date.today %>
   </div>

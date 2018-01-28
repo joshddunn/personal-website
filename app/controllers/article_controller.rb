@@ -3,11 +3,13 @@ class ArticleController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = Article.where("published <= '#{Date.today}'").order(published: :desc)
+    hidden = user_signed_in? ? "" : "and hidden = false"
+    @articles = Article.where("published <= '#{Date.today}' #{hidden}").order(hidden: :desc, published: :desc)
   end
 
   def show
     @article = Article.find_by(parameterized: params[:id])
+    redirect_to root_path if @article.hidden && !user_signed_in?
   end
 
   def new
@@ -44,7 +46,7 @@ class ArticleController < ApplicationController
   private
     
     def article_params
-      filtered = params.require(:article).permit(:title, :published, :content)
+      filtered = params.require(:article).permit(:title, :published, :content, :hidden)
       filtered = filtered.merge(parameterized: filtered[:title].parameterize) if filtered.key?(:title)
       filtered = filtered.merge(markdown: helpers.markdown(filtered[:content])) if filtered.key?(:content)
       filtered

@@ -5,5 +5,6 @@ FactoryBot.define do
     published { Faker::Date.between(2.years.ago, Date.today) }
     content { Faker::Lorem.paragraph }
     markdown { ApplicationController.helpers.markdown(content) }
+    hidden false
   end
 end
