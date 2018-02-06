@@ -50,4 +50,15 @@
   width: calc(100% - 20px);
   margin-bottom: 50px;
   border-bottom: 1px solid black;
+  font-size: 11pt;
+
+  a {
+    text-decoration: none;
+    color: darken($blue, 20%) !important;
+
+    &:hover {
+      color: darken($blue, 10%) !important;
+      text-decoration: underline;
+    }
+  }
 }
