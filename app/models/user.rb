@@ -6,4 +6,6 @@ class User < ApplicationRecord
          # :recoverable,
          :rememberable, 
          :trackable, :validatable
+
+  has_one :resume
 end

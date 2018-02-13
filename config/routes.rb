@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end 
 
   resources :article
+  resources :resume, only: [:new, :create, :destroy]
   
   root "article#index"
 end

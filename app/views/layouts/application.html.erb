@@ -5,8 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
@@ -20,7 +19,9 @@
           <div>
             <div class="name">Josh Dunn</div>
             <div><%= link_to "Blog", root_path %></div>
-            <%# <div><%= link_to "Resume", "#" %1></div> %>
+            <% if resume? %>
+              <div><%= link_to "Resume", resume_link, target: "_blank" %></div>
+            <% end %>
             <div class="contact">
               <div>
                 <%= link_to "//github.com/joshddunn", title: :Github do %>
@@ -55,6 +56,19 @@
                                                                                    data: { 
                                                                                      confirm: "Are you sure?" 
                                                                                    } %>
+                </div>
+              <% end %>
+              <% if resume? %>
+                <div>
+                  <%= link_to "Delete Resume", resume_path(resume_id), method: :delete, 
+                                                                       class: "delete",
+                                                                       data: { 
+                                                                         confirm: "Are you sure?" 
+                                                                       } %>
+                </div>
+              <% else %>
+                <div>
+                  <%= link_to "Add Resume", new_resume_path %>
                 </div>
               <% end %>
             </div>

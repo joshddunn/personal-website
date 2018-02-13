@@ -1,0 +1,12 @@
+<%= form_for @resume, as: :resume, url: resume_index_path do |f| %> 
+  <%= render 'shared/error_messages', object: @resume %>
+
+  <div>
+    <%= f.label :pdf %><br>
+    <%= f.file_field :pdf, accept: 'application/pdf' %>
+  </div>
+
+  <div>
+    <%= f.submit "Add Resume" %>
+  </div>
+<% end %>
