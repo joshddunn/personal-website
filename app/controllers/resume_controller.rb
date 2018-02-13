@@ -23,7 +23,7 @@ class ResumeController < ApplicationController
   private
 
     def resume_params
-      filtered = params.require(:resume).permit(:id, :user_id, :pdf)
+      filtered = params.fetch(:resume, {}).permit(:id, :user_id, :pdf)
       filtered[:user_id] = current_user.id
       filtered
     end
