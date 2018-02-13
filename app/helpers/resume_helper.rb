@@ -1,13 +1,13 @@
 module ResumeHelper
   def resume?
-    return current_user.resume.present? 
+    return Resume.all.present? 
   end
 
   def resume_id
-    return current_user.resume.id 
+    return Resume.first.id 
   end
 
   def resume_link
-    return current_user.resume.pdf.url 
+    return Resume.first.pdf.url 
   end
 end
