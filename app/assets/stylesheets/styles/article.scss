@@ -48,7 +48,7 @@
 .content-show {
   padding: 10px;
   width: calc(100% - 20px);
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   border-bottom: 1px solid black;
   font-size: 11pt;
 
@@ -60,5 +60,15 @@
       color: darken($blue, 10%) !important;
       text-decoration: underline;
     }
+  }
+}
+
+.below-article {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 10pt;
+
+  a {
+    text-decoration: underline !important;
   }
 }
