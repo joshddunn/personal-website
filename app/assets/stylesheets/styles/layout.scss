@@ -21,6 +21,7 @@
     @media (max-width: $media-break) {
       margin-bottom: 20px;
     }
+
   }
 
   .yield {
@@ -45,18 +46,26 @@
     align-items: center;
   }
 
-  .me {
+  .img-container {
+    height: 150px;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 5px;
+
     @media (max-width: $media-break) {
       margin-right: 10px;
     }
 
-    width: 125px;
-    border-radius: 5px;
-    border: 1px solid black;
-    margin-bottom: 5px;
+    .me {
+      margin-top: -7px;
+      width: 125px;
+      border-radius: 5px;
+    }
   }
 
   .name {
+    margin-top: 10px;
     margin-bottom: 10px;
     font-weight: bold;
   }
