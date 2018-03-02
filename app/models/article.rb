@@ -4,4 +4,6 @@ class Article < ApplicationRecord
   validates :content, presence: true
   validates :markdown, presence: true
   validates :published, presence: true
+
+  has_many :screenshots
 end
