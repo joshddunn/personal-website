@@ -5,5 +5,5 @@ class Article < ApplicationRecord
   validates :markdown, presence: true
   validates :published, presence: true
 
-  has_many :screenshots
+  has_many :screenshots, dependent: :destroy
 end
