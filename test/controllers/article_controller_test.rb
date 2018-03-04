@@ -149,4 +149,24 @@ class ArticleControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_select "div.title-index > a", count: 0, text: "this is a hidden article"
   end
+
+  test "cannot create two articles with the same title" do
+    create(:article, hidden: true, title: "this is a hidden article")
+    test_article = attributes_for(:article, title: "this is a hidden article")
+
+    
+    assert_difference "Article.count", 0 do
+      post article_index_url, params: { article: test_article }
+    end
+  end
+
+  test "cannot create two articles with the same parameterized name" do
+    create(:article, hidden: true, title: "this is a hidden article")
+    test_article = attributes_for(:article, title: "this is a HIDDEN article")
+
+    
+    assert_difference "Article.count", 0 do
+      post article_index_url, params: { article: test_article }
+    end
+  end
 end
