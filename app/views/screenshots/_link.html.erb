@@ -1,0 +1,17 @@
+<div id=<%= "screenshot_#{screenshot.id}" %> class="screenshot">
+  <div>
+    <%= link_to screenshot_path(screenshot.id), method: :delete, remote: true, title: "Delete image" do %>
+      <%= fa_icon :times %>
+    <% end %>
+    <%= link_to screenshot.image.url, target: "_blank", title: "View image in new tab" do %>
+      <%= fa_icon :image %>
+    <% end %>
+    <%= link_to "", onclick: "copyLink('#{Rails.application.config.url}#{screenshot.image.url}')", title: "Copy link to clipboard" do %> 
+      <%= fa_icon :copy %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= image_tag screenshot.image.url, class: "preview" %>
+  </div>
+</div>

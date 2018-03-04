@@ -3,6 +3,14 @@ body {
   margin: 0px;
 }
 
+.fa-times {
+  color: $red;
+
+  &:hover {
+    color: lighten($red, 10%);
+  }
+}
+
 textarea {
   width: 100%;
   resize: none;
@@ -113,3 +121,4 @@ pre {
   .vm { color: #19177C } /* Name.Variable.Magic */
   .il { color: #666666 } /* Literal.Number.Integer.Long */
 }
+

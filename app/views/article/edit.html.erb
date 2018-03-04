@@ -1,3 +1,27 @@
+<h3>Add Screenshots</h3>
+<%= form_for @screenshot, as: :screenshot, url: screenshots_path, remote: true do |f| %>
+  <%= render 'shared/error_messages', object: @screenshot %>
+  <%= f.hidden_field :article_id %>
+
+  <div>
+    <%= f.label :image %><br>
+    <%= f.file_field :image, accept: '.jpg,.png' %>
+  </div>
+
+  <div>
+    <%= f.submit "Add Screenshot" %>
+  </div>
+<% end %>
+
+<h3>Screenshot List</h3>
+<%= text_field_tag "copy", "", class: "copy-link" %>
+<div id="screenshots" class="screenshots">
+  <% @article.screenshots.each do |screenshot| %>
+    <%= render "screenshots/link", screenshot: screenshot %> 
+  <% end %>
+</div>
+
+<h3>Article</h3>
 <%= form_for @article, as: :article, url: article_path do |f| %>
   <%= render 'shared/error_messages', object: @article %>
 

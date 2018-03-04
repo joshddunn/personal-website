@@ -72,3 +72,24 @@
     text-decoration: underline !important;
   }
 }
+
+.screenshots {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .screenshot {
+    margin: 10px;
+
+    .preview {
+      max-width: 100px;
+    }
+  }
+}
+
+.copy-link {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  tabindex: -1;
+}
