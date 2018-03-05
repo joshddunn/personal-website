@@ -98,10 +98,10 @@
   }
 
   .delete {
-    color: red;
+    color: $red;
 
     &:hover {
-      color: darken(red, 20%);
+      color: lighten($red, 10%);
     }
   }
 }
