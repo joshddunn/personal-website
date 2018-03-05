@@ -40,7 +40,7 @@ class ArticleController < ApplicationController
   end
 
   def destroy
-    Article.find_by(parameterized: params[:id]).delete
+    Article.find_by(parameterized: params[:id]).destroy
     redirect_to root_path
   end
 
