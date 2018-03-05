@@ -8,6 +8,8 @@ copyLink = (link) ->
   copy.select()
   document.execCommand("copy")
 
+  return 0
+
 root = exports ? this
 root.copyLink = copyLink
 
