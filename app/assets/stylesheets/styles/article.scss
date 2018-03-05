@@ -73,16 +73,29 @@
   }
 }
 
-.screenshots {
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
+.add-screenshots-container {
+  display: none;
+}
 
-  .screenshot {
-    margin: 10px;
+.screenshots-container {
+  display: none;
 
-    .preview {
-      max-width: 100px;
+  .screenshots {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .screenshot {
+      margin: 10px;
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .preview {
+        max-width: 100px;
+      }
     }
   }
 }

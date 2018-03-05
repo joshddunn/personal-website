@@ -1,24 +1,41 @@
-<h3>Add Screenshots</h3>
-<%= form_for @screenshot, as: :screenshot, url: screenshots_path, remote: true do |f| %>
-  <%= render 'shared/error_messages', object: @screenshot %>
-  <%= f.hidden_field :article_id %>
-
-  <div>
-    <%= f.label :image %><br>
-    <%= f.file_field :image, accept: '.jpg,.png' %>
-  </div>
-
-  <div>
-    <%= f.submit "Add Screenshot" %>
-  </div>
-<% end %>
-
-<h3>Screenshot List</h3>
-<%= text_field_tag "copy", "", class: "copy-link" %>
-<div id="screenshots" class="screenshots">
-  <% @article.screenshots.each do |screenshot| %>
-    <%= render "screenshots/link", screenshot: screenshot %> 
+<h3>
+  <%= link_to "", class: "collapse", data: { which: "add-screenshots-container" } do %> 
+  <%= fa_icon "chevron-circle-right" %>
   <% end %>
+  Add Screenshots
+</h3>
+
+<div class="add-screenshots-container">
+  <%= form_for @screenshot, as: :screenshot, url: screenshots_path, remote: true do |f| %>
+    <%= render 'shared/error_messages', object: @screenshot %>
+    <%= f.hidden_field :article_id %>
+
+    <div>
+      <%= f.label :image %><br>
+      <%= f.file_field :image, accept: '.jpg,.png' %>
+    </div>
+
+    <div>
+      <%= f.submit "Add Screenshot" %>
+    </div>
+  <% end %>
+</div>
+
+<%= text_field_tag "copy", "", class: "copy-link" %>
+
+<h3>
+  <%= link_to "", class: "collapse", data: { which: "screenshots-container" } do %> 
+  <%= fa_icon "chevron-circle-right" %>
+  <% end %>
+  Screenshot List
+</h3>
+
+<div class="screenshots-container">
+  <div id="screenshots" class="screenshots">
+    <% @article.screenshots.each do |screenshot| %>
+      <%= render "screenshots/link", screenshot: screenshot %> 
+    <% end %>
+  </div>
 </div>
 
 <h3>Article</h3>

@@ -9,11 +9,6 @@ class ScreenshotsController < ApplicationController
         format.html {}
         format.js
       end
-    else
-      respond_to do |format|
-        format.html {}
-        format.js { render text: 'alert();' }
-      end
     end
   end
 

@@ -10,3 +10,17 @@ copyLink = (link) ->
 
 root = exports ? this
 root.copyLink = copyLink
+
+$ ->
+  ready = ->
+    $(".collapse").on "click", (e) ->
+      item = $("." + $(this).data("which"))
+      item.toggle()
+
+      icon = $(this).children('i')
+      icon.toggleClass('fa-chevron-circle-right')
+      icon.toggleClass('fa-chevron-circle-down')
+
+      return false
+
+  $(document).on('turbolinks:load', ready)
