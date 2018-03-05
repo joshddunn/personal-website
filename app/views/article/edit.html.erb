@@ -7,7 +7,10 @@
 
 <div class="add-screenshots-container">
   <%= form_for @screenshot, as: :screenshot, url: screenshots_path, remote: true do |f| %>
-    <%= render 'shared/error_messages', object: @screenshot %>
+    <div id="screenshot-errors">
+      <%= render 'shared/error_messages', object: @screenshot %>
+    </div>
+
     <%= f.hidden_field :article_id %>
 
     <div>
