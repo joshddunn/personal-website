@@ -1,0 +1,16 @@
+<%= form_for screenshot, as: :screenshot, url: screenshots_path, remote: true, format: :js do |f| %>
+  <div id="screenshot-errors">
+    <%= render 'shared/error_messages', object: @screenshot %>
+  </div>
+
+  <%= f.hidden_field :article_id %>
+
+  <div>
+    <%= f.label :image %><br>
+    <%= f.file_field :image, accept: '.jpg,.png' %>
+  </div>
+
+  <div>
+    <%= f.submit "Add Screenshot" %>
+  </div>
+<% end %>

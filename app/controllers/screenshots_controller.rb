@@ -6,13 +6,13 @@ class ScreenshotsController < ApplicationController
     @screenshot = Screenshot.new(screenshot_params)
     if @screenshot.save
       respond_to do |format|
+        format.html { raise 'Unsupported' }
         format.js
-        format.html {}
       end
     else
       respond_to do |format|
+        format.html { raise 'Unsupported' }
         format.js { render 'errors' }
-        format.html {}
       end
     end
   end
@@ -20,8 +20,8 @@ class ScreenshotsController < ApplicationController
   def destroy
     @screenshot = Screenshot.find(params[:id]).destroy
     respond_to do |format|
+      format.html { raise 'Unsupported' }
       format.js
-      format.html {}
     end
   end
 
