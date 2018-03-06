@@ -1,4 +1,4 @@
-class ResumeController < ApplicationController
+class ResumesController < ApplicationController
 
   before_action :authenticate_user!
 

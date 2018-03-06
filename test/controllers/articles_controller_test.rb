@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ArticleControllerTest < ActionDispatch::IntegrationTest
+class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   attr_reader :user, :new_article, :article
 
@@ -24,7 +24,7 @@ class ArticleControllerTest < ActionDispatch::IntegrationTest
     signin user
 
     assert_difference "Article.count" do
-      post article_index_url, params: { article: new_article }
+      post articles_url, params: { article: new_article }
     end
 
     assert_redirected_to article_path Article.last.parameterized
@@ -33,7 +33,7 @@ class ArticleControllerTest < ActionDispatch::IntegrationTest
   test "invalid create article should render new" do
     signin user
 
-    post article_index_url, params: { article: new_article.without(:title) }
+    post articles_url, params: { article: new_article.without(:title) }
 
     assert_template :new
   end
@@ -82,7 +82,7 @@ class ArticleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "cannot create article unless logged in" do
-    post article_index_url, params: { article: new_article }
+    post articles_url, params: { article: new_article }
     assert_redirected_to new_user_session_url
   end
 
@@ -156,7 +156,7 @@ class ArticleControllerTest < ActionDispatch::IntegrationTest
 
     
     assert_difference "Article.count", 0 do
-      post article_index_url, params: { article: test_article }
+      post articles_url, params: { article: test_article }
     end
   end
 
@@ -166,7 +166,7 @@ class ArticleControllerTest < ActionDispatch::IntegrationTest
 
     
     assert_difference "Article.count", 0 do
-      post article_index_url, params: { article: test_article }
+      post articles_url, params: { article: test_article }
     end
   end
 

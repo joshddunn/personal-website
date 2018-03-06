@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ResumeControllerTest < ActionDispatch::IntegrationTest
+class ResumesControllerTest < ActionDispatch::IntegrationTest
 
   attr_reader :user, :new_resume, :resume 
 
@@ -19,7 +19,7 @@ class ResumeControllerTest < ActionDispatch::IntegrationTest
   test "can create resume when logged in" do
     signin user
     assert_difference "Resume.count" do
-      post resume_index_url, params: { resume: new_resume }
+      post resumes_url, params: { resume: new_resume }
     end
     assert_redirected_to root_path
   end
@@ -38,7 +38,7 @@ class ResumeControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "cannot create resume unless logged in" do
-    post resume_index_url, params: { resume: new_resume }
+    post resumes_url, params: { resume: new_resume }
     assert_redirected_to new_user_session_url
   end
 
