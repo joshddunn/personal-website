@@ -8,8 +8,15 @@
       <%= link_to screenshot.image.url, target: "_blank", title: "View image in new tab" do %>
         <%= fa_icon :image %>
       <% end %>
-      <%= link_to "javascript:void(0)", onclick: "copyLink('#{Rails.application.config.url}#{screenshot.image.url}')", title: "Copy link to clipboard" do %> 
-        <%= fa_icon :copy %>
+      <%= link_to "javascript:void(0)", 
+        onclick: "copyLink('#{Rails.application.config.url}#{screenshot.image.url}')", 
+        title: "Copy link to clipboard" do %> 
+          <%= fa_icon :copy %>
+      <% end %>
+      <%= link_to "javascript:void(0)", 
+        onclick: "copyFormatted('#{Rails.application.config.url}#{screenshot.image.url}')", 
+        title: "Copy formatted element to clipboard" do %> 
+          <%= fa_icon :clone %>
       <% end %>
     </div>
     <div>

@@ -169,4 +169,18 @@ class ArticleControllerTest < ActionDispatch::IntegrationTest
       post article_index_url, params: { article: test_article }
     end
   end
+
+  test "when deleting article should destroy all associated screenshots" do
+    signin user
+
+    create(:screenshot, article: article)
+    create(:screenshot, article: article)
+    create(:screenshot, article: article)
+
+    assert_equal Screenshot.all.count, 3
+
+    delete article_url article.parameterized
+
+    assert_equal Screenshot.all.count, 0
+  end
 end

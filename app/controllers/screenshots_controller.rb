@@ -6,13 +6,13 @@ class ScreenshotsController < ApplicationController
     @screenshot = Screenshot.new(screenshot_params)
     if @screenshot.save
       respond_to do |format|
-        format.html {}
         format.js
+        format.html {}
       end
     else
       respond_to do |format|
-        format.html {}
         format.js { render 'errors' }
+        format.html {}
       end
     end
   end
@@ -20,15 +20,15 @@ class ScreenshotsController < ApplicationController
   def destroy
     @screenshot = Screenshot.find(params[:id]).destroy
     respond_to do |format|
-      format.html {}
       format.js
+      format.html {}
     end
   end
 
   private
 
     def screenshot_params
-      filtered = params.require(:screenshot).permit(:article_id, :image)
+      filtered = params.require(:screenshot).permit(:article, :article_id, :image)
       filtered
     end
 end

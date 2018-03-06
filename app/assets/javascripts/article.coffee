@@ -13,6 +13,17 @@ copyLink = (link) ->
 root = exports ? this
 root.copyLink = copyLink
 
+copyFormatted = (link) ->
+  copy = $("#copy")
+  copy.val("<image src=\"" + link + "\" style=\"width:100%\">")
+  copy.select()
+  document.execCommand("copy")
+
+  return 0
+
+root = exports ? this
+root.copyFormatted = copyFormatted
+
 $ ->
   ready = ->
     $(".collapse").on "click", (e) ->

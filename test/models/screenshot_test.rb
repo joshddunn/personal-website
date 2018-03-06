@@ -1,7 +1,22 @@
 require 'test_helper'
 
 class ScreenshotTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  attr_reader :article
+
+  def setup
+    @article = create(:article)
+  end
+
+  test "valid with valid attributes / valid factory" do
+    assert build(:screenshot, article: article).valid?  
+  end
+
+  test "invalid with no article" do
+    assert_not build(:screenshot, article: nil).valid?  
+  end
+
+  test "invalid with no file" do
+    assert_not build(:screenshot, image: nil).valid?  
+  end
 end

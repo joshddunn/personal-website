@@ -31,10 +31,11 @@ class ArticleController < ApplicationController
   end
 
   def update
-    @article = @article = Article.find_by(parameterized: params[:id])
+    @article = Article.find_by(parameterized: params[:id])
     if @article.update(article_params)
       redirect_to article_path(@article.parameterized)
     else
+      @screenshot = Screenshot.new(article_id: @article.id)
       render "edit"
     end
   end
