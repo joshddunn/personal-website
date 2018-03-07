@@ -24,7 +24,7 @@ class ScreenshotsControllerTest < ActionDispatch::IntegrationTest
     signin user
 
     assert_difference "Screenshot.count", -1 do
-      delete screenshot_url screenshot.id, xhr: true, format: :js
+      delete screenshot_url screenshot.hex, xhr: true, format: :js
     end
 
     assert_equal 'text/javascript', @response.content_type
@@ -36,7 +36,7 @@ class ScreenshotsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "must be logged in to destroy screenshot" do
-    delete screenshot_url screenshot.id
+    delete screenshot_url screenshot.hex
     assert_redirected_to new_user_session_url
   end
 end

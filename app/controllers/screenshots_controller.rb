@@ -18,7 +18,7 @@ class ScreenshotsController < ApplicationController
   end
 
   def destroy
-    @screenshot = Screenshot.find(params[:id]).destroy
+    @screenshot = Screenshot.find_by(hex: params[:id]).destroy
     respond_to do |format|
       format.html { raise 'Unsupported' }
       format.js

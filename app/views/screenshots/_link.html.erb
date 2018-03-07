@@ -20,7 +20,7 @@
       <% end %>
     </div>
     <div>
-      <%= link_to screenshot_path(screenshot.id), method: :delete, remote: true, title: "Delete image" do %>
+      <%= link_to screenshot_path(screenshot.hex), method: :delete, remote: true, title: "Delete image" do %>
         <%= fa_icon :times %>
       <% end %>
     </div>
