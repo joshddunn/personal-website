@@ -19,4 +19,9 @@ class ScreenshotTest < ActiveSupport::TestCase
   test "invalid with no file" do
     assert_not build(:screenshot, image: nil).valid?  
   end
+
+  test "image url" do
+    screenshot = create(:screenshot, article: article)
+    assert screenshot.image.url.match /\/image\/[a-z0-9]{20}\?/
+  end
 end

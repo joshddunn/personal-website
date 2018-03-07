@@ -10,5 +10,8 @@ class ActiveSupport::TestCase
   def signin user
     post user_session_path user: { email: user.email, password: 'password' }
   end
-  # Add more helper methods to be used by all tests here...
+
+  Minitest.after_run do
+    FileUtils.rm_rf 'test/test_files'
+  end
 end
