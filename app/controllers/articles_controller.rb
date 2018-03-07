@@ -49,9 +49,7 @@ class ArticlesController < ApplicationController
     
     def article_params
       filtered = params.require(:article).permit(:title, :published, :content, :hidden)
-      filtered = filtered.merge(parameterized: filtered[:title].parameterize) if filtered.key?(:title)
       filtered = filtered.merge(content: "Write your article here!") unless filtered.key?(:content)
-      filtered = filtered.merge(markdown: helpers.markdown(filtered[:content])) if filtered.key?(:content)
       filtered
     end
 end

@@ -10,10 +10,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not build(:article, title: "").valid?
   end
 
-  test "invalid with no parameterized" do
-    assert_not build(:article, parameterized: nil).valid?
-  end
-
   test "invalid with no posted" do
     assert_not build(:article, published: nil).valid?
   end
@@ -22,7 +18,4 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not build(:article, content: "").valid?
   end
 
-  test "invalid with no markdown" do
-    assert_not build(:article, markdown: nil).valid?
-  end
 end
