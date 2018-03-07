@@ -52,4 +52,5 @@ class ArticlesController < ApplicationController
       filtered = filtered.merge(content: "Write your article here!") unless filtered.key?(:content)
       filtered
     end
+
 end

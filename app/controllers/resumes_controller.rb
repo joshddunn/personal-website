@@ -27,4 +27,5 @@ class ResumesController < ApplicationController
       filtered[:user_id] = current_user.id
       filtered
     end
+
 end

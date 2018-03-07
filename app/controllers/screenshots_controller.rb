@@ -31,4 +31,5 @@ class ScreenshotsController < ApplicationController
       filtered = params.require(:screenshot).permit(:article, :article_id, :image)
       filtered
     end
+
 end

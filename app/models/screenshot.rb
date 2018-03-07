@@ -1,4 +1,5 @@
 class Screenshot < ApplicationRecord
+
   before_validation :generate_hex
 
   has_attached_file :image, url: "/image/:hex"

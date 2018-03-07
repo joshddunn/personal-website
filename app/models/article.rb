@@ -37,4 +37,5 @@ class Article < ApplicationRecord
     def parameterize_title
       self.parameterized = self.title.to_s.parameterize
     end
+
 end
