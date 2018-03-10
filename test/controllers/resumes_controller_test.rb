@@ -47,4 +47,15 @@ class ResumesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_url
   end
 
+  test "with resume resume link is shown" do
+    get root_url
+    assert_select "a[href=?]", resume.pdf.url
+  end
+  
+  test "without resume resume link is not shown" do
+    resume.destroy
+    get root_url
+    assert_select "a[href=?]", resume.pdf.url, count: 0
+  end
+
 end

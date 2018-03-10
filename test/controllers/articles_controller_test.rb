@@ -183,4 +183,10 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal Screenshot.all.count, 0
   end
+
+  test "hidden articles should not be shown" do
+    create(:article, hidden: true, title: "I'm hidden")
+    get root_url
+    assert_select "a", text: /I'm hidden/, count: 0
+  end
 end
