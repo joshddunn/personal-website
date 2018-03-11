@@ -189,4 +189,28 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_select "a", text: /I'm hidden/, count: 0
   end
+
+  test "no new article link when not signed in" do
+    get root_url
+    assert_select "a[href=?]", new_article_path, count: 0
+  end
+  
+  test "new article link when signed in" do
+    signin user
+    get root_url
+    assert_select "a[href=?]", new_article_path
+  end
+
+  test "edit article and delete article link when signed in" do
+    signin user
+    get article_url article.parameterized
+    assert_select "a[href=?]",  edit_article_path(article.parameterized)
+    assert_select "a[href=?]",  article_path(article.parameterized), method: :delete
+  end
+
+  test "no edit article and delete article link when not signed in" do
+    get article_url article.parameterized
+    assert_select "a[href=?]",  edit_article_path(article.parameterized), count: 0
+    assert_select "a[href=?]",  article_path(article.parameterized), method: :delete, count: 0
+  end
 end
