@@ -2,7 +2,7 @@
   Blog Posts
 </div>
 <% @articles.each do |article| %>
-  <% cache "article-#{article.id}" do %>
+  <% cache article do %>
     <div class="article-index">
       <div class="title-index">
         <% if article.hidden %>
