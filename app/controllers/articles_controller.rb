@@ -9,7 +9,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by(parameterized: params[:id])
-    redirect_to root_path if @article.hidden && !user_signed_in?
+    if @article.hidden && !user_signed_in?
+      redirect_to root_path 
+    else
+      fresh_when @article
+    end
   end
 
   def new
