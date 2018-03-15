@@ -1,7 +1,7 @@
-<div id="screenshots-container">
+<div class="screenshots-container">
   <%= render "screenshots/empty", count: screenshots.count %> 
 
-  <div id="screenshots">
+  <div id="screenshots" class="screenshots">
     <% screenshots.each do |screenshot| %>
       <%= render "screenshots/link", screenshot: screenshot %> 
     <% end %>

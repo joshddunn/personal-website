@@ -18,7 +18,7 @@
   Screenshot List
 </h3>
 
-<%= render "screenshots/screenshots", screenshots: @article.screenshots %> 
+<%= render "screenshots/screenshots", screenshots: @article.screenshots, cached: true %> 
 
 <h3>Article</h3>
 <%= form_for @article, as: :article, url: article_path do |f| %>
