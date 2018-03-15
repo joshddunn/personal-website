@@ -39,4 +39,5 @@ class ScreenshotsControllerTest < ActionDispatch::IntegrationTest
     delete screenshot_url screenshot.hex
     assert_redirected_to new_user_session_url
   end
+
 end

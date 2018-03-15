@@ -18,13 +18,7 @@
   Screenshot List
 </h3>
 
-<div class="screenshots-container">
-  <div id="screenshots" class="screenshots">
-    <% @article.screenshots.each do |screenshot| %>
-      <%= render "screenshots/link", screenshot: screenshot %> 
-    <% end %>
-  </div>
-</div>
+<%= render "screenshots/screenshots", screenshots: @article.screenshots %> 
 
 <h3>Article</h3>
 <%= form_for @article, as: :article, url: article_path do |f| %>
