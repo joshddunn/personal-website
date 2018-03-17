@@ -23,9 +23,9 @@ class ResumesController < ApplicationController
   private
 
     def resume_params
-      filtered = params.fetch(:resume, {}).permit(:id, :user_id, :pdf)
-      filtered[:user_id] = current_user.id
-      filtered
+      params.fetch(:resume, {}).permit(:id, :user_id, :pdf).tap do |p|
+        p[:user_id] = current_user.id
+      end
     end
 
 end

@@ -52,9 +52,9 @@ class ArticlesController < ApplicationController
   private
     
     def article_params
-      filtered = params.require(:article).permit(:title, :published, :content, :hidden)
-      filtered = filtered.merge(content: "Write your article here!") unless filtered.key?(:content)
-      filtered
+      params.require(:article).permit(:title, :published, :content, :hidden).tap do |p|
+        p[:content] = "Write your article here!" unless p.key?(:content)
+      end
     end
 
 end

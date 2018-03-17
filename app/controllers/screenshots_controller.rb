@@ -28,8 +28,7 @@ class ScreenshotsController < ApplicationController
   private
 
     def screenshot_params
-      filtered = params.require(:screenshot).permit(:article, :article_id, :image)
-      filtered
+      params.require(:screenshot).permit(:article, :article_id, :image)
     end
 
 end
