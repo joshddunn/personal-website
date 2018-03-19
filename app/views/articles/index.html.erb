@@ -5,12 +5,8 @@
   <% cache article do %>
     <div class="article-index">
       <div class="title-index">
-        <% if article.pinned %>
-          <%= fa_icon "star" %>
-        <% end %>
-        <% if article.hidden %>
-          <%= fa_icon "eye-slash" %>
-        <% end %>
+        <%= pinned_icon article %>
+        <%= hidden_icon article %>
         <%= link_to article.title, article_path(article.parameterized) %>
       </div>
       <div class="date-index">
