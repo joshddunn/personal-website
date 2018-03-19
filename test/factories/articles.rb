@@ -4,5 +4,6 @@ FactoryBot.define do
     published { Faker::Date.between(2.years.ago, Date.today) }
     content { Faker::Lorem.paragraph }
     hidden false
+    pinned false
   end
 end
