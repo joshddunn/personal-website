@@ -12,6 +12,11 @@
   </div>
 
   <div>
+    <%= f.label :pinned %>
+    <%= f.check_box :pinned %>
+  </div>
+
+  <div>
     <%= f.label :published, "Publish On" %><br>
     <%= f.date_field :published, value: Date.today %>
   </div>

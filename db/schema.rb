@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307015900) do
+ActiveRecord::Schema.define(version: 20180319062122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(version: 20180307015900) do
     t.datetime "updated_at", null: false
     t.string "parameterized"
     t.boolean "hidden", default: false
+    t.boolean "pinned", default: false
     t.index ["parameterized"], name: "index_articles_on_parameterized", unique: true
+    t.index ["pinned"], name: "index_articles_on_pinned"
     t.index ["published"], name: "index_articles_on_published"
     t.index ["title"], name: "index_articles_on_title", unique: true
   end

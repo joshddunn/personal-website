@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
 
   def index
     hidden = user_signed_in? ? "" : "and hidden = false"
-    @articles = Article.where("published <= '#{Date.today}' #{hidden}").order(hidden: :desc, published: :desc)
+    @articles = Article.where("published <= '#{Date.today}' #{hidden}")
+                       .order(pinned: :desc, hidden: :desc, published: :desc)
   end
 
   def show
@@ -52,7 +53,7 @@ class ArticlesController < ApplicationController
   private
     
     def article_params
-      params.require(:article).permit(:title, :published, :content, :hidden).tap do |p|
+      params.require(:article).permit(:title, :published, :content, :hidden, :pinned).tap do |p|
         p[:content] = "Write your article here!" unless p.key?(:content)
       end
     end

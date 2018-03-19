@@ -5,6 +5,9 @@
   <% cache article do %>
     <div class="article-index">
       <div class="title-index">
+        <% if article.pinned %>
+          <%= fa_icon "star" %>
+        <% end %>
         <% if article.hidden %>
           <%= fa_icon "eye-slash" %>
         <% end %>
