@@ -50,7 +50,7 @@
     height: 150px;
     overflow: hidden;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-bottom: 5px;
 
     @media (max-width: $media-break) {
@@ -105,4 +105,3 @@
     }
   }
 }
-
