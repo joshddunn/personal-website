@@ -1,5 +1,5 @@
+# article model
 class Article < ApplicationRecord
-
   before_validation :generate_markdown
   before_validation :parameterize_title
 
@@ -13,29 +13,29 @@ class Article < ApplicationRecord
 
   private
 
-    class HTMLwithPygments < Redcarpet::Render::HTML
-      def block_code(code, language)
-        Pygments.css(:style => "monokai")
-        Pygments.highlight(code, lexer:language)
-      end
+  # markdown html styling
+  class HTMLwithPygments < Redcarpet::Render::HTML
+    def block_code(code, language)
+      Pygments.css(style: 'monokai')
+      Pygments.highlight(code, lexer: language)
     end
+  end
 
-    def generate_markdown
-      options = {
-        autolink: true,
-        no_intra_emphasis: true,
-        fenced_code_blocks: true,
-        lax_html_blocks: true,
-        strikethrough: true,
-        superscript: true
-      }
+  def generate_markdown
+    options = {
+      autolink: true,
+      no_intra_emphasis: true,
+      fenced_code_blocks: true,
+      lax_html_blocks: true,
+      strikethrough: true,
+      superscript: true
+    }
 
-      translator = Redcarpet::Markdown.new(HTMLwithPygments, options)
-      self.markdown =  translator.render(self.content)
-    end
+    translator = Redcarpet::Markdown.new(HTMLwithPygments, options)
+    self.markdown = translator.render(content)
+  end
 
-    def parameterize_title
-      self.parameterized = self.title.to_s.parameterize
-    end
-
+  def parameterize_title
+    self.parameterized = title.to_s.parameterize
+  end
 end

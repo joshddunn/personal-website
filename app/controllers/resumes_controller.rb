@@ -1,5 +1,5 @@
+# resumes controller
 class ResumesController < ApplicationController
-
   before_action :authenticate_user!
 
   def new
@@ -22,10 +22,9 @@ class ResumesController < ApplicationController
 
   private
 
-    def resume_params
-      params.fetch(:resume, {}).permit(:id, :user_id, :pdf).tap do |p|
-        p[:user_id] = current_user.id
-      end
+  def resume_params
+    params.fetch(:resume, {}).permit(:id, :user_id, :pdf).tap do |p|
+      p[:user_id] = current_user.id
     end
-
+  end
 end

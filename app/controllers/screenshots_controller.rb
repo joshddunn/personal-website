@@ -1,5 +1,5 @@
+# screenshots controller
 class ScreenshotsController < ApplicationController
-
   before_action :authenticate_user!
 
   def create
@@ -27,8 +27,7 @@ class ScreenshotsController < ApplicationController
 
   private
 
-    def screenshot_params
-      params.require(:screenshot).permit(:article, :article_id, :image)
-    end
-
+  def screenshot_params
+    params.require(:screenshot).permit(:article, :article_id, :image)
+  end
 end
