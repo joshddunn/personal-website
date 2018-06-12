@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
-
   attr_reader :user, :new_article, :article
 
   def setup
@@ -10,27 +9,27 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @new_article = attributes_for(:article)
   end
 
-  test "root url" do
+  test 'root url' do
     get root_url
     assert_response :success
   end
 
-  test "should show article" do
+  test 'should show article' do
     get article_url article.parameterized
     assert_response :success
   end
 
-  test "should create article" do
+  test 'should create article' do
     signin user
 
-    assert_difference "Article.count" do
+    assert_difference 'Article.count' do
       post articles_url, params: { article: new_article }
     end
 
     assert_redirected_to article_path Article.last.parameterized
   end
 
-  test "invalid create article should render new" do
+  test 'invalid create article should render new' do
     signin user
 
     post articles_url, params: { article: new_article.without(:title) }
@@ -38,70 +37,70 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_template :new
   end
 
-  test "should update article" do
+  test 'should update article' do
     signin user
 
-    patch article_url article.parameterized, params: { article: { title: "New Title" } }
+    patch article_url article.parameterized,
+                      params: { article: { title: 'New Title' } }
     assert_redirected_to article_path Article.last.parameterized
 
     article.reload
 
-    assert_equal "New Title", article.title
+    assert_equal 'New Title', article.title
   end
 
-  test "invalid update article should render edit" do
+  test 'invalid update article should render edit' do
     signin user
 
-    patch article_url article.parameterized, params: { article: { title: "" } }
+    patch article_url article.parameterized, params: { article: { title: '' } }
     assert_template :edit
   end
 
-  test "should destroy article" do
+  test 'should destroy article' do
     signin user
 
-    assert_difference "Article.count", -1 do
+    assert_difference 'Article.count', -1 do
       delete article_url article.parameterized
     end
 
     assert_redirected_to root_path
   end
 
-  test "should new article" do
+  test 'should new article' do
     signin user
 
     get new_article_url
     assert_response :success
   end
 
-
-  test "should edit article" do
+  test 'should edit article' do
     signin user
 
     get edit_article_url article.parameterized
     assert_response :success
   end
 
-  test "cannot create article unless logged in" do
+  test 'cannot create article unless logged in' do
     post articles_url, params: { article: new_article }
     assert_redirected_to new_user_session_url
   end
 
-  test "cannot update article unless logged in" do
-    patch article_url article.parameterized, params: { article: "New Title" }
+  test 'cannot update article unless logged in' do
+    patch article_url article.parameterized, params: { article: 'New Title' }
     assert_redirected_to new_user_session_url
   end
 
-  test "cannot new article unless logged in" do
+  test 'cannot new article unless logged in' do
     get new_article_url
     assert_redirected_to new_user_session_url
   end
 
-  test "cannot edit article unless logged in" do
+  test 'cannot edit article unless logged in' do
     get edit_article_url article.parameterized
     assert_redirected_to new_user_session_url
   end
 
-  test "should have certain links with login" do
+  test 'should have certain links with login' do
     signin user
     get root_url
 
@@ -111,13 +110,14 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     ]
 
     links.each do |link|
-      assert_select "div.actions a[href=?]", link
+      assert_select 'div.actions a[href=?]', link
     end
 
-    assert_select "div.actions a[href=?][data-method=delete]", article_path(article.parameterized), { count: 0 }
+    assert_select 'div.actions a[href=?][data-method=delete]',
+                  article_path(article.parameterized), count: 0
   end
 
-  test "should have certain links with login on article" do
+  test 'should have certain links with login on article' do
     signin user
     get article_url article.parameterized
 
@@ -128,49 +128,49 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     ]
 
     links.each do |link|
-      assert_select "div.actions a[href=?]", link
+      assert_select 'div.actions a[href=?]', link
     end
 
-    assert_select "div.actions a[href=?][data-method=delete]", article_path(article.parameterized)
+    assert_select 'div.actions a[href=?][data-method=delete]',
+                  article_path(article.parameterized)
   end
 
-  test "should see hidden article when signed in" do
+  test 'should see hidden article when signed in' do
     signin user
 
-    create(:article, hidden: true, title: "this is a hidden article")
+    create(:article, hidden: true, title: 'this is a hidden article')
 
     get root_url
-    assert_select "div.title-index > a", "this is a hidden article"
+    assert_select 'div.title-index > a', 'this is a hidden article'
   end
 
-  test "should not see hidden article without sign in" do
-    create(:article, hidden: true, title: "this is a hidden article")
+  test 'should not see hidden article without sign in' do
+    create(:article, hidden: true, title: 'this is a hidden article')
 
     get root_url
-    assert_select "div.title-index > a", count: 0, text: "this is a hidden article"
+    assert_select 'div.title-index > a',
+                  count: 0, text: 'this is a hidden article'
   end
 
-  test "cannot create two articles with the same title" do
-    create(:article, hidden: true, title: "this is a hidden article")
-    test_article = attributes_for(:article, title: "this is a hidden article")
+  test 'cannot create two articles with the same title' do
+    create(:article, hidden: true, title: 'this is a hidden article')
+    test_article = attributes_for(:article, title: 'this is a hidden article')
 
-    
-    assert_difference "Article.count", 0 do
+    assert_difference 'Article.count', 0 do
       post articles_url, params: { article: test_article }
     end
   end
 
-  test "cannot create two articles with the same parameterized name" do
-    create(:article, hidden: true, title: "this is a hidden article")
-    test_article = attributes_for(:article, title: "this is a HIDDEN article")
+  test 'cannot create two articles with the same parameterized name' do
+    create(:article, hidden: true, title: 'this is a hidden article')
+    test_article = attributes_for(:article, title: 'this is a HIDDEN article')
 
-    
-    assert_difference "Article.count", 0 do
+    assert_difference 'Article.count', 0 do
       post articles_url, params: { article: test_article }
     end
   end
 
-  test "when deleting article should destroy all associated screenshots" do
+  test 'when deleting article should destroy all associated screenshots' do
     signin user
 
     create(:screenshot, article: article)
@@ -184,33 +184,36 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_equal Screenshot.all.count, 0
   end
 
-  test "hidden articles should not be shown" do
+  test 'hidden articles should not be shown' do
     create(:article, hidden: true, title: "I'm hidden")
     get root_url
-    assert_select "a", text: /I'm hidden/, count: 0
+    assert_select 'a', text: /I'm hidden/, count: 0
   end
 
-  test "no new article link when not signed in" do
+  test 'no new article link when not signed in' do
     get root_url
-    assert_select "a[href=?]", new_article_path, count: 0
+    assert_select 'a[href=?]', new_article_path, count: 0
   end
-  
-  test "new article link when signed in" do
+
+  test 'new article link when signed in' do
     signin user
     get root_url
-    assert_select "a[href=?]", new_article_path
+    assert_select 'a[href=?]', new_article_path
   end
 
-  test "edit article and delete article link when signed in" do
+  test 'edit article and delete article link when signed in' do
     signin user
     get article_url article.parameterized
-    assert_select "a[href=?]",  edit_article_path(article.parameterized)
-    assert_select "a[href=?]",  article_path(article.parameterized), method: :delete
+    assert_select 'a[href=?]',  edit_article_path(article.parameterized)
+    assert_select 'a[href=?]',  article_path(article.parameterized),
+                  method: :delete
   end
 
-  test "no edit article and delete article link when not signed in" do
+  test 'no edit article and delete article link when not signed in' do
     get article_url article.parameterized
-    assert_select "a[href=?]",  edit_article_path(article.parameterized), count: 0
-    assert_select "a[href=?]",  article_path(article.parameterized), method: :delete, count: 0
+    assert_select 'a[href=?]',  edit_article_path(article.parameterized),
+                  count: 0
+    assert_select 'a[href=?]',  article_path(article.parameterized),
+                  method: :delete, count: 0
   end
 end

@@ -1,5 +1,5 @@
 <h3>
-  <%= link_to "", class: "collapse", data: { which: "add-screenshots-container" } do %> 
+  <%= link_to "", class: "collapse", data: { which: "add-screenshots-container" } do %>
   <%= fa_icon "chevron-circle-right" %>
   <% end %>
   Add Screenshots
@@ -12,13 +12,13 @@
 <%= text_field_tag "copy", "", class: "copy-link" %>
 
 <h3>
-  <%= link_to "", class: "collapse", data: { which: "screenshots-container" } do %> 
+  <%= link_to "", class: "collapse", data: { which: "screenshots-container" } do %>
   <%= fa_icon "chevron-circle-right" %>
   <% end %>
   Screenshot List
 </h3>
 
-<%= render "screenshots/screenshots", screenshots: @article.screenshots, cached: true %> 
+<%= render "screenshots/screenshots", screenshots: @article.screenshots, cached: true %>
 
 <h3>Article</h3>
 <%= form_for @article, as: :article, url: article_path do |f| %>
