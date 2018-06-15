@@ -6,7 +6,7 @@ class Screenshot < ApplicationRecord
   validates_attachment_content_type :image, content_type: /png|jpg/
 
   validates :image, presence: true
-  validates :hex, format: { with: /\A[a-z0-9]+\z/ }, length: { is: 20 }
+  validates :hex, format: { with: %r{\A[a-z0-9]+\z} }, length: { is: 20 }
 
   belongs_to :article
 
