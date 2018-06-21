@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-tract': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -56,10 +56,10 @@
                 <% if yield(:article).present? %>
                   <div><%= link_to "Edit Article", edit_article_path(yield(:article)) %></div>
                   <div>
-                    <%= link_to "Delete Article", article_path(yield(:article)), method: :delete, 
+                    <%= link_to "Delete Article", article_path(yield(:article)), method: :delete,
                                                                                      class: "delete",
-                                                                                     data: { 
-                                                                                       confirm: "Are you sure?" 
+                                                                                     data: {
+                                                                                       confirm: "Are you sure?"
                                                                                      } %>
                   </div>
                 <% end %>
@@ -68,10 +68,10 @@
               <div class="action-container">
                 <% if resume? %>
                   <div>
-                    <%= link_to "Delete Resume", resume_path(resume_id), method: :delete, 
+                    <%= link_to "Delete Resume", resume_path(resume_id), method: :delete,
                                                                          class: "delete",
-                                                                         data: { 
-                                                                           confirm: "Are you sure?" 
+                                                                         data: {
+                                                                           confirm: "Are you sure?"
                                                                          } %>
                   </div>
                 <% else %>
